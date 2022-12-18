@@ -10,8 +10,11 @@ endif()
 
 set(CMAKE_CXX_FLAGS "-O3")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+set (PYTHON_VERSION 3.8)
 
 project(automobile)
+
+find_package(Python ${PYTHON_VERSION} REQUIRED COMPONENTS Development)
 
 include_directories("${CMAKE_SOURCE_DIR}/cpp/include/automobile_bits")
 include_directories("${CMAKE_SOURCE_DIR}/python")
@@ -21,7 +24,6 @@ file (GLOB HEADER_FILES "cpp/include/automobile_bits/*.hpp")
 file (GLOB PYTHON_FILES "python/*.cpp" "python/*.hpp")
 
 # Set up such that XCode organizes the files
-source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${SOURCE_FILES} ${HEADER_FILES} ${PYTHON_FILES} )
 
 include(pybind11.cmake)
 pybind11_add_module(automobile 
@@ -34,5 +36,5 @@ target_link_libraries(automobile PUBLIC)
 
 install(TARGETS automobile
   COMPONENT python
-  LIBRARY DESTINATION "${PYTHON_LIBRARY_DIR}"
+  LIBRARY DESTINATION ${Python_SITELIB}/bike # this installed automobile.so to /bike/ (!)
   )

@@ -12,7 +12,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/../bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/../bin)
 
-find_library(AUTOMOBILE_LIB automobile HINTS /usr/local/lib/)
+find_library(AUTOMOBILE_LIB automobile HINTS /usr/local/lib/) 
+#Please set them or make sure they are set and tested correctly in the CMake files:
+# AUTOMOBILE_LIB  (!)
 
 add_executable(test_cpp src/test_cpp.cpp)
 

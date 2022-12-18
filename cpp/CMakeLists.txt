@@ -22,9 +22,6 @@ set(SOURCE_FILES
     ${PROJECT_SOURCE_DIR}/motorcycle.cpp
 )
 
-# Set up such that XCode organizes the files correctly
-source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${SOURCE_FILES})
-
 # Add library
 add_library(automobile SHARED ${SOURCE_FILES})
 
@@ -32,7 +29,7 @@ add_library(automobile SHARED ${SOURCE_FILES})
 target_include_directories(automobile PRIVATE include/automobile_bits)
 
 # Install
-install(TARGETS automobile DESTINATION lib)
+install(TARGETS automobile DESTINATION lib LIBRARY DESTINATION lib)
 
 # Install the headers
 install(FILES include/automobile DESTINATION include)
